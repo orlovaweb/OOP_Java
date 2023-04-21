@@ -8,14 +8,14 @@ public class HotDrink extends Product {
     private int volume;
     private int temperature;
 
-    /*
+    /**
      * Перегрузка конструктора
      * 
-     * @param name название
+     * @param name        название
      * 
-     * @param price цена
+     * @param price       цена
      * 
-     * @param volume объем напитка
+     * @param volume      объем напитка
      * 
      * @param tempetature температура напитка
      */
