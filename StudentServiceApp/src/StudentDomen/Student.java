@@ -20,14 +20,17 @@ public class Student extends User implements Comparable<Student> {
         this.studentID = studentID;
     }
 
+    /* получение идентификационного номера студента */
     public long getStudentID() {
         return studentID;
     }
 
+    /* установка идентификационного номера студента */
     public void setStudentID(long studentID) {
         this.studentID = studentID;
     }
 
+    /* перегрузка мерода вывода */
     @Override
     public String toString() {
         return "Student{"
@@ -39,10 +42,9 @@ public class Student extends User implements Comparable<Student> {
                 '}';
     }
 
+    /* перегрузка метода для сравнения двух студентов */
     @Override
     public int compareTo(Student o) {
-
-        // System.out.println(super.getFirstName()+" - "+o.getFirstName());
         if (super.getAge() == o.getAge()) {
             if (this.studentID == o.studentID) {
                 return 0;

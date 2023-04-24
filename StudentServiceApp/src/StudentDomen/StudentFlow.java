@@ -19,14 +19,17 @@ public class StudentFlow implements Iterable<StudentGroup> {
     this.flow = flow;
   }
 
+  /* получение списка групп в потоке */
   public List<StudentGroup> getFlow() {
     return flow;
   }
 
+  /* установка списка групп в потоке */
   public void setFlow(List<StudentGroup> flow) {
     this.flow = flow;
   }
 
+  /* перегрузка метода Итератора с использованием анонимного класса */
   @Override
   public Iterator<StudentGroup> iterator() {
     return new Iterator<StudentGroup>() {

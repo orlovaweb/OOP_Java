@@ -23,27 +23,27 @@ public class StudentGroup implements Iterable<Student>, Comparable<StudentGroup>
         this.groupID = groupID;
     }
 
+    /* получение списка студентов в группе */
     public List<Student> getStudents() {
         return students;
     }
 
+    /* установка списка студентов группы */
     public void setStudents(List<Student> students) {
         this.students = students;
     }
 
+    /* получение номера группы */
     public long getGroupID() {
         return groupID;
     }
 
+    /* установка номера группы */
     public void setGroupID(long groupID) {
         this.groupID = groupID;
     }
 
-    // @Override
-    // public Iterator<Student> iterator() {
-    // return new StudentGroupIterator(students);
-    // }
-
+    /* перегрузка метода Итератора с использованием анонимного класса */
     @Override
     public Iterator<Student> iterator() {
         return new Iterator<Student>() {
@@ -66,6 +66,7 @@ public class StudentGroup implements Iterable<Student>, Comparable<StudentGroup>
         };
     }
 
+    /* перегрузка метода сравнения двух студенческих групп */
     @Override
     public int compareTo(StudentGroup o) {
         if (this.students.size() == o.getStudents().size()) {
