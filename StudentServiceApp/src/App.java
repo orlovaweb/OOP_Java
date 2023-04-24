@@ -11,7 +11,6 @@ import StudentDomen.User;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        User u1 = new User("Сергей", "Иванов", 25);
         Student s1 = new Student("Сергей", "Иванов", 22, (long) 401);
         Student s2 = new Student("Андрей", "Сидоров", 22, (long) 111);
         Student s3 = new Student("Иван", "Петров", 22, (long) 121);
@@ -70,12 +69,5 @@ public class App {
             }
         }
 
-        // for (Student stud : group1) {
-        // System.out.println(stud);
-        // }
-
-        // System.out.println(u1);
-        // System.out.println(s1);
-        // System.out.println(group);
     }
 }
