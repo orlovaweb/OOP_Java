@@ -1,10 +1,21 @@
 package StudentDomen;
 
+/**
+ * Класс Пользователь, описывающий человека, который может быть связан с
+ * Деканатом
+ */
 public class User {
     private String firstName;
     private String secondName;
     private int age;
 
+    /**
+     * конструктор
+     * 
+     * @param firstName  имя
+     * @param secondName фамилия
+     * @param age        возраст
+     */
     public User(String firstName, String secondName, int age) {
         this.firstName = firstName;
         this.secondName = secondName;

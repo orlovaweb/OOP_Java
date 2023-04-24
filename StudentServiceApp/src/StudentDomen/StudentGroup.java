@@ -3,10 +3,21 @@ package StudentDomen;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Класс Группа студентов, расширенный интерфейсом Iterable для возможности
+ * перебора элементов внутри него,
+ * и интерфейсом Comparable для указания метода сравнения групп студентов
+ */
 public class StudentGroup implements Iterable<Student>, Comparable<StudentGroup> {
     private List<Student> students;
     private long groupID;
 
+    /**
+     * конструктор класса
+     * 
+     * @param students список студентов
+     * @param groupID  номер группы
+     */
     public StudentGroup(List<Student> students, long groupID) {
         this.students = students;
         this.groupID = groupID;

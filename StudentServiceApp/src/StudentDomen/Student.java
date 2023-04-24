@@ -1,8 +1,20 @@
 package StudentDomen;
 
+/**
+ * Класс Студент дочерний от Пользователь, с добаклением интерфейса для
+ * сравнения студентов
+ */
 public class Student extends User implements Comparable<Student> {
     private long studentID;
 
+    /**
+     * конструктор класса
+     * 
+     * @param firstName  имя
+     * @param secondName фамилия
+     * @param age        возраст
+     * @param studentID  идентификационный номер
+     */
     public Student(String firstName, String secondName, int age, long studentID) {
         super(firstName, secondName, age);
         this.studentID = studentID;

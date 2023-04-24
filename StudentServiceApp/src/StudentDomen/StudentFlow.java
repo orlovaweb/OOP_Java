@@ -3,9 +3,18 @@ package StudentDomen;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Класс Поток студентов, расширенный интерфейсом Iterable для возможности
+ * перебора его элементов - групп
+ */
 public class StudentFlow implements Iterable<StudentGroup> {
   private List<StudentGroup> flow;
 
+  /**
+   * конструктор класса
+   * 
+   * @param flow список групп потока
+   */
   public StudentFlow(List<StudentGroup> flow) {
     this.flow = flow;
   }
