@@ -4,70 +4,66 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import Controllers.EmploeeController;
+import StudentDomen.AverageAge;
+import StudentDomen.Emploee;
 import StudentDomen.Student;
 import StudentDomen.StudentFlow;
 import StudentDomen.StudentGroup;
+import StudentDomen.Teacher;
 import StudentDomen.User;
+import StudentService.EmploeeService;
+import StudentService.StudentService;
+import StudentService.TeacherService;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Student s1 = new Student("Сергей", "Иванов", 22, (long) 401);
-        Student s2 = new Student("Андрей", "Сидоров", 22, (long) 111);
-        Student s3 = new Student("Иван", "Петров", 22, (long) 121);
-        Student s4 = new Student("Игорь", "Иванов", 23, (long) 301);
-        Student s5 = new Student("Даша", "Цветкова", 23, (long) 171);
-        Student s6 = new Student("Лена", "Незабудкина", 23, (long) 104);
-        Student s7 = new Student("Николай", "Иванов", 21, (long) 102);
-        Student s8 = new Student("Александр", "Сидоров", 22, (long) 110);
-        Student s9 = new Student("Евгений", "Петров", 22, (long) 122);
-        Student s10 = new Student("Савелий", "Иванов", 23, (long) 321);
-        Student s11 = new Student("Екатерина", "Цветкова", 23, (long) 131);
-        Student s12 = new Student("Кристина", "Незабудкина", 23, (long) 100);
 
-        List<Student> listStud1 = new ArrayList<Student>();
-        listStud1.add(s1);
-        listStud1.add(s2);
-        listStud1.add(s3);
-        listStud1.add(s4);
-        listStud1.add(s6);
-        listStud1.add(s7);
-        listStud1.add(s8);
-        listStud1.add(s5);
-        List<Student> listStud2 = new ArrayList<Student>();
-        listStud2.add(s9);
-        listStud2.add(s10);
-        listStud2.add(s11);
-        listStud2.add(s12);
+        // Создаем сервис студентов - экземпляр класса StudentService
+        StudentService serv = new StudentService();
+        // Добавляем студентов внутрь сервиса
+        serv.create("Коптерев", "Федор", 20);
+        serv.create("Коптерева", "Дарина", 22);
+        // Выводим список студентов внутри сервиса
+        System.out.println("Список студентов:");
+        System.out.println(serv.getAll());
+        // Создаем сервис работников - экземпляр класса EmploeeService
+        EmploeeService servEmp = new EmploeeService();
+        // Добавляем работников внутрь сервиса
+        servEmp.create("Коптерева", "Дарья", 52);
+        servEmp.create("Шинкарюк", "София", 52);
+        servEmp.create("Коптерева", "Алевтина", 52);
+        servEmp.create("Астафьева", "Фрося", 52);
+        // Выводим список работников из сервиса
+        System.out.println("Список работников:");
+        System.out.println(servEmp.getAll());
+        System.out.println("=============После сортировки==============");
+        // Выводим отсортированный список работников из сервиса
+        System.out.println(servEmp.getSortedByFIOStudentGroup());
 
-        StudentGroup group1 = new StudentGroup(listStud1, (long) 308);
-        StudentGroup group2 = new StudentGroup(listStud2, (long) 304);
+        // Создаем сервис преподавателей - экземпляр класса TeacherService
+        TeacherService servTeach = new TeacherService();
+        // Добавляем преподавателей внутрь сервиса
+        servTeach.create("Коптерева", "Дарья", 30, "доцент");
+        servTeach.create("Шинкарюк", "София", 42);
+        servTeach.create("Коптерева", "Алевтина", 52, "ст. преподав.");
+        servTeach.create("Астафьева", "Фрося", 62);
+        // Выводим список преподавателей из сервиса
+        System.out.println("Список преподавателей:");
+        System.out.println(servTeach.getAll());
+        System.out.println("===========После сортировки================");
+        // Выводим отсортированный список преподавателей из сервиса
+        System.out.println(servTeach.getSortedByFIOStudentGroup());
 
-        List<StudentGroup> listFlow = new ArrayList<StudentGroup>();
-        listFlow.add(group1);
-        listFlow.add(group2);
-        StudentFlow flow = new StudentFlow(listFlow);
-
-        for (StudentGroup group : flow) {
-            System.out.println("");
-            System.out.println("Group:" + group.getGroupID());
-            for (Student stud : group) {
-                System.out.println(stud);
-            }
-        }
-
-        System.out.println("============= после сортировки =============");
-        Collections.sort(flow.getFlow());
-
-        for (StudentGroup group : flow) {
-            Collections.sort(group.getStudents());
-        }
-        for (StudentGroup group : flow) {
-            System.out.println("");
-            System.out.println("Group:" + group.getGroupID());
-            for (Student stud : group) {
-                System.out.println(stud);
-            }
-        }
+        /* Вычисление средних возрастов */
+        // Создаем экземпляр класса, с необходимым нам типом, затем вызываем метод
+        // вычисления среднего возраста
+        AverageAge<Student> averageAgeOfStudents = new AverageAge<>(serv.getAll());
+        System.out.println("Средний возраст студентов: " + averageAgeOfStudents.calculateAverageAge());
+        AverageAge<Teacher> averageAgeOfTeachers = new AverageAge<>(servTeach.getAll());
+        System.out.println("Средний возраст преподавателей: " + averageAgeOfTeachers.calculateAverageAge());
+        AverageAge<Emploee> averageAgeOfEmploee = new AverageAge<>(servEmp.getAll());
+        System.out.println("Средний возраст работников: " + averageAgeOfEmploee.calculateAverageAge());
 
     }
 }

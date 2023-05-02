@@ -1,7 +1,7 @@
 package StudentDomen;
 
 /**
- * Класс Студент дочерний от Пользователь, с добаклением интерфейса для
+ * Класс Студент дочерний от Пользователь, с добавлением интерфейса для
  * сравнения студентов
  */
 public class Student extends User implements Comparable<Student> {
@@ -30,7 +30,7 @@ public class Student extends User implements Comparable<Student> {
         this.studentID = studentID;
     }
 
-    /* перегрузка мерода вывода */
+    /* перегрузка метода вывода */
     @Override
     public String toString() {
         return "Student{"
